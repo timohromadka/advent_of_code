@@ -28,7 +28,7 @@ def puzzle2_2(f):
 def puzzle3_1(f):
     pairs = f.read().split("\n")
     splits = [(pair[0:len(pair)//2], pair[len(pair)//2:]) for pair in pairs]
-    comms = [''.join(set(s1).intersection(s2)) for s1,s2 in splits]
+    comms = [min(set(s1) & set(s2)) for s1,s2 in splits]
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     alph_dict = {c:i for i,c in enumerate(alphabet, start=1)}
     return sum(alph_dict.get(letter) for letter in comms)
