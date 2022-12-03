@@ -30,7 +30,7 @@ def puzzle3_1(f):
     splits = [(pair[0:len(pair)//2], pair[len(pair)//2:]) for pair in pairs]
     comms = [''.join(set(s1).intersection(s2)) for s1,s2 in splits]
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alph_dict = dict(map(reversed, dict(enumerate(alphabet, start=1)).items())) 
+    alph_dict = {c:i for i,c in enumerate(alphabet, start=1)}
     return sum(alph_dict.get(letter) for letter in comms)
 
 def puzzle3_2(f):
@@ -39,6 +39,6 @@ def puzzle3_2(f):
     splits = [pairs[i:i+n] for i in range(0, len(pairs), n)]
     comms = [set(a) & set(b) & set(c) for a,b,c in splits]
     alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alph_dict = dict(map(reversed, dict(enumerate(alphabet, start=1)).items())) 
+    alph_dict = {c:i for i,c in enumerate(alphabet, start=1)}
     return sum(alph_dict.get(num) for num,*_ in comms)
 
